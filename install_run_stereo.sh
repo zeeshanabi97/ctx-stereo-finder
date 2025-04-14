@@ -88,13 +88,13 @@ if [ "${#MISSING_PKGS[@]}" -ne 0 ]; then
     fi
 fi
 
-# --- Check for ctx_stereo_finder.py ---
-if [ ! -f "ctx_stereo_finder.py" ]; then
-    echo "Error: ctx_stereo_finder.py not found in the current directory!"
+# --- Check for ctx_stereo_finder.ipynb ---
+if [ ! -f "ctx_stereo_finder.ipynb" ]; then
+    echo "Error: ctx_stereo_finder.ipynb not found in the current directory!"
     exit 1
 fi
 
-# --- Check for browser and install if needed ---
+# --- Check for browser ---
 BROWSER=""
 if command -v firefox &>/dev/null; then
     BROWSER="firefox"
@@ -128,18 +128,11 @@ else
     fi
 fi
 
-# --- Convert and run in Jupyter ---
+# --- Launch Jupyter Notebook ---
 echo "======================================="
 echo "Opening CTX Stereo Finder in Jupyter..."
 echo "======================================="
 
-# Convert script to notebook if not already converted
-if [ ! -f "ctx_stereo_finder.ipynb" ]; then
-    jupyter nbconvert --to notebook --execute --inplace ctx_stereo_finder.py --output ctx_stereo_finder.ipynb || \
-    jupyter nbconvert --to notebook ctx_stereo_finder.py --output ctx_stereo_finder.ipynb
-fi
-
-# Launch Jupyter Notebook with specified browser
 if [ -n "$BROWSER" ]; then
     jupyter notebook ctx_stereo_finder.ipynb --browser="$BROWSER"
 else
