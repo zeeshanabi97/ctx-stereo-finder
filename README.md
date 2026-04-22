@@ -33,11 +33,11 @@ The Mars CTX Stereo Finder allows you to:
 1. Clone or download this repository
 2. Make the installation script executable:
 ```bash
-chmod +x install_run_ctx_stereo.sh
+chmod +x install_run_stereo.sh
 ```
 3. Run the installation script:
 ```bash
-./install_run_ctx_stereo.sh
+./install_run_stereo.sh
 ```
 
 The script will:
